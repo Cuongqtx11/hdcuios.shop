@@ -106,6 +106,7 @@
     video.removeAttribute('src');
     video.load();
     video.poster = `assets/posters/${lesson.id}.jpg`;
+    video.closest('.video-frame').classList.toggle('video-frame--portrait', index >= 2);
     video.setAttribute('aria-label', 'Video hướng dẫn: ' + lesson.title);
     cover.hidden = false;
     cover.setAttribute('aria-label', 'Phát video: ' + lesson.title);
