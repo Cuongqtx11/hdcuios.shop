@@ -27,3 +27,11 @@ Nội dung bài nằm trong `dist/app.js`, giao diện trong `dist/styles.css` v
 https://cuongqtx11.github.io/hdcuios.shop/
 
 Bài Telegram số 27 bổ sung hướng dẫn và ảnh CSign; header liên kết kênh thông báo https://t.me/chungchifree11.
+
+## Luồng chọn ứng dụng
+
+- `dist/index.html`: trang bắt đầu, nút Bắt đầu hướng dẫn dẫn đến lựa chọn CSign / ESign.
+- `dist/csign.html`: thông tin và hướng dẫn riêng cho CSign theo bài Telegram 27.
+- `dist/esign.html`: năm mục và video chỉ dành cho ESign.
+- Không có tìm kiếm hoặc danh sách hướng dẫn trộn hai ứng dụng trên trang bắt đầu.
+- Liên kết đánh dấu cũ ở trang chủ tự chuyển tới trang hướng dẫn tương ứng.
