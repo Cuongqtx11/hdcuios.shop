@@ -28,7 +28,22 @@
       note: 'Video minh họa cả bước lấy UDID và nhận chứng chỉ. Thông tin thanh toán, trạng thái và mật khẩu cần lấy từ đơn hàng của chính bạn; giao diện hiện tại có thể khác đôi chút.'
     },
     {
-      id: 'cai-esign', short: 'Cài ESign', nav: 'ESign & chứng chỉ', category: 'ESIGN', icon: 'pen', duration: '2:45',
+      id: 'cai-csign', short: 'Cài CSign', nav: 'CSign · Dễ bắt đầu', category: 'CSIGN', icon: 'app', app: 'csign', duration: 'Bài viết & ảnh',
+      mediaType: 'image', image: 'assets/guides/csign-overview.jpg',
+      title: 'CSign — ưu tiên cho người mới',
+      description: 'CSign có sẵn chứng chỉ và nguồn IPA, giúp bạn bắt đầu thuận tiện hơn. Hỗ trợ iOS 16 trở lên theo bài hướng dẫn.',
+      source: 'https://t.me/huongdancaiipa/27',
+      steps: [
+        ['Mở đơn tại trang Nhận Hàng', 'Sau khi đơn có chứng chỉ, nhập UDID hoặc mã đơn của bạn rồi bấm Kiểm Tra trên cuios.shop.'],
+        ['Chọn đúng nút Cài đặt CSign', 'Tìm biểu tượng CS màu xanh hồng trên nền tối, như ảnh minh họa. Bấm nút CSign và hoàn tất yêu cầu cài đặt của iOS.'],
+        ['Mở CSign để bắt đầu', 'Theo thông báo trên kênh, bản CSign này đã có chứng chỉ sẵn; bạn không cần nhập thủ công như khi dùng ESign.'],
+        ['Sử dụng nguồn IPA có sẵn', 'Bạn có thể tải xuống và ký ứng dụng từ nguồn IPA trong CSign. Theo dõi hướng dẫn bên trong app cho từng thao tác.'],
+        ['Xem hướng dẫn ngay trong app', 'Mở Cài đặt → HDSD trong CSign. Bạn cũng có thể cài cả ESign nếu muốn; không bắt buộc phải dùng cả hai.']
+      ],
+      note: 'Nội dung và ảnh từ bài Telegram số 27. CSign là lựa chọn được ưu tiên cho người mới; nếu đã quen ESign, bạn có thể tiếp tục dùng ESign. Thông tin chứng chỉ và mật khẩu cần lấy từ đơn hàng của chính bạn.'
+    },
+    {
+      id: 'cai-esign', short: 'Cài ESign', nav: 'ESign & chứng chỉ', category: 'ESIGN', icon: 'pen', app: 'esign', portrait: true, duration: '2:45',
       title: 'Cài ESign & nhập chứng chỉ',
       description: 'Chuẩn bị ESign và nhập chứng chỉ của bạn để sẵn sàng cài ứng dụng.',
       source: 'https://t.me/huongdancaiipa/15',
@@ -42,8 +57,8 @@
       note: 'Phải tải và nhập chứng chỉ thủ công trước khi cài IPA. Video cũng kiểm tra mục Cài đặt → Quyền riêng tư & Bảo mật → Chế độ nhà phát triển; theo dõi phần này nếu iOS yêu cầu.'
     },
     {
-      id: 'cai-ipa', short: 'Cài ứng dụng IPA', nav: 'Cài ứng dụng IPA', category: 'CÀI ỨNG DỤNG', icon: 'app', duration: '3:56',
-      title: 'Cài ứng dụng từ tệp IPA',
+      id: 'cai-ipa', short: 'IPA bằng ESign', nav: 'Cài IPA bằng ESign', category: 'CÀI ỨNG DỤNG', icon: 'app', app: 'esign', portrait: true, duration: '3:56',
+      title: 'Cài ứng dụng IPA bằng ESign',
       description: 'Làm theo video để thao tác với tệp IPA và cài ứng dụng về máy bằng ESign.',
       source: 'https://t.me/huongdancaiipa/21',
       steps: [
@@ -56,7 +71,7 @@
       note: 'ESign cần được nhập chứng chỉ trước bước ký. Theo bài Telegram, ESign mod cài tương tự ví dụ; bạn có thể tạm dừng video để thực hiện từng thao tác.'
     },
     {
-      id: 'nhan-ban-ipa', short: 'Nhân bản IPA', nav: 'Nhân bản ứng dụng', category: 'NHÂN BẢN', icon: 'copy', duration: '3:52',
+      id: 'nhan-ban-ipa', short: 'Nhân bản IPA', nav: 'Nhân bản bằng ESign', category: 'NHÂN BẢN', icon: 'copy', app: 'esign', portrait: true, duration: '3:52',
       title: 'Nhân bản ứng dụng IPA',
       description: 'Tạo một bản ứng dụng với mã định danh riêng, khác với ứng dụng đang có.',
       source: 'https://t.me/huongdancaiipa/24',
@@ -72,6 +87,10 @@
   ];
   const $ = id => document.getElementById(id);
   const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+  const appNames = {csign: 'CSign', esign: 'ESign'};
+  const appImages = {csign: 'assets/icons/csign.jpeg', esign: 'assets/icons/esign.png'};
+  const lessonIcon = lesson => lesson.id === 'cai-csign' || lesson.id === 'cai-esign'
+    ? `<img src="${appImages[lesson.app]}" alt="" width="34" height="34">` : icon(lesson.icon);
   const number = index => String(index + 1).padStart(2, '0');
   const normalize = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase();
   let currentIndex = 0;
@@ -87,7 +106,7 @@
     const a = document.createElement('a');
     a.href = '#' + lesson.id;
     a.dataset.lesson = lesson.id;
-    a.innerHTML = `<span class="nav-icon">${icon(lesson.icon)}</span><span><strong>${lesson.nav}</strong><small>Bước ${number(index)} · ${lesson.duration}</small></span>${icon('chevron').replace('class="icon"', 'class="icon nav-chevron"')}`;
+    a.innerHTML = `<span class="nav-icon">${lessonIcon(lesson)}</span><span><strong>${lesson.nav}</strong><small>Mục ${number(index)} · ${lesson.duration}</small></span>${icon('chevron').replace('class="icon"', 'class="icon nav-chevron"')}`;
     nav.append(a);
     const quick = document.createElement('a');
     quick.href = '#' + lesson.id;
@@ -105,23 +124,39 @@
     video.pause();
     video.removeAttribute('src');
     video.load();
-    video.poster = `assets/posters/${lesson.id}.jpg`;
-    video.closest('.video-frame').classList.toggle('video-frame--portrait', index >= 2);
+    const isImage = lesson.mediaType === 'image';
+    video.closest('.video-frame').hidden = isImage;
+    $('videoHelp').hidden = isImage;
+    $('imageGuide').hidden = !isImage;
+    if (isImage) {
+      video.removeAttribute('poster');
+      $('guideImage').src = lesson.image;
+      $('guideImageLink').href = lesson.image;
+    } else {
+      video.poster = `assets/posters/${lesson.id}.jpg`;
+    }
+    video.closest('.video-frame').classList.toggle('video-frame--portrait', !!lesson.portrait);
     video.setAttribute('aria-label', 'Video hướng dẫn: ' + lesson.title);
     cover.hidden = false;
     cover.setAttribute('aria-label', 'Phát video: ' + lesson.title);
     status.hidden = true;
     status.textContent = '';
-    $('lessonNumber').textContent = `BƯỚC ${number(index)} / 05`;
+    $('lessonNumber').textContent = `MỤC ${number(index)} / ${number(lessons.length - 1)}`;
     $('lessonCategory').textContent = lesson.category;
     $('lessonTitle').textContent = lesson.title;
     $('lessonDescription').textContent = lesson.description;
     $('videoDuration').textContent = lesson.duration;
     $('videoSource').href = lesson.source;
-    $('lessonPosition').textContent = `${number(index)} / 05`;
+    $('lessonPosition').textContent = `${number(index)} / ${number(lessons.length - 1)}`;
+    $('lessonAppBadge').hidden = !lesson.app;
+    if (lesson.app) {
+      $('lessonAppIcon').src = appImages[lesson.app];
+      $('lessonAppIcon').alt = 'Icon ' + appNames[lesson.app];
+      $('lessonAppName').textContent = lesson.app === 'csign' ? 'CSign · Chứng chỉ có sẵn' : 'ESign · Nhập chứng chỉ thủ công';
+    }
     $('previousLesson').disabled = index === 0;
     $('nextLesson').disabled = index === lessons.length - 1;
-    $('nextLesson').firstChild.textContent = index === lessons.length - 1 ? 'Đã đến bước cuối' : 'Bước tiếp theo';
+    $('nextLesson').firstChild.textContent = index === lessons.length - 1 ? 'Đã đến bước cuối' : 'Mục tiếp theo';
     const stepList = $('lessonSteps');
     stepList.replaceChildren();
     lesson.steps.forEach(([title, text]) => {
@@ -140,7 +175,7 @@
     });
     if (options.hash && location.hash !== '#' + lesson.id) history.pushState(null, '', '#' + lesson.id);
     if (options.scroll) $('huong-dan').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start'});
-    document.title = lesson.title + ' · Hướng dẫn CUIOS';
+    document.title = lesson.title + ' · Hướng Dẫn Cài Đặt';
   }
 
   document.addEventListener('click', event => {
@@ -165,6 +200,7 @@
   });
 
   cover.addEventListener('click', async () => {
+    if (lessons[currentIndex].mediaType === 'image') return;
     const generation = videoGeneration;
     status.hidden = true;
     if (!video.getAttribute('src')) video.src = `assets/videos/${lessons[currentIndex].id}.mp4`;

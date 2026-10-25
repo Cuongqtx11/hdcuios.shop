@@ -12,7 +12,7 @@ Xuất bản: GitHub Pages từ workflow `.github/workflows/pages.yml`.
 
 - Mở website bằng Safari.
 - Mua chứng chỉ và lấy UDID.
-- Cài ESign, nhập kho chứng chỉ.
+- Chọn CSign (chứng chỉ có sẵn) hoặc ESign (nhập kho chứng chỉ thủ công).
 - Ký và cài IPA.
 - Nhân bản ứng dụng bằng mã định danh riêng.
 
@@ -25,3 +25,5 @@ Nội dung bài nằm trong `dist/app.js`, giao diện trong `dist/styles.css` v
 ## Trang đã xuất bản
 
 https://cuongqtx11.github.io/hdcuios.shop/
+
+Bài Telegram số 27 bổ sung hướng dẫn và ảnh CSign; header liên kết kênh thông báo https://t.me/chungchifree11.
